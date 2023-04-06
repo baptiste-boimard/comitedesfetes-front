@@ -1,14 +1,12 @@
 import { combineReducers } from 'redux';
-import loginSlice from './login';
 
-// ==-- IMPORT REDUCERS--==
-// import loginReducer from './login';
-import utilitiesReducer from './utilities';
+// ==-- IMPORT SLICE--==
+import loginSlice from '../slice/login';
+import utilitiesSlice from '../slice/utilities';
 
 const rootReducer = combineReducers({
-  // login: loginReducer,
-  login: loginSlice.reducer,
-  utilities: utilitiesReducer,
+  loginReducer: loginSlice,
+  utilitiesReducer: utilitiesSlice,
 });
 
 export default rootReducer;

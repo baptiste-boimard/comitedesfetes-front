@@ -1,16 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+  logged: false,
+  isOpenSignup: false,
+  isOpenLogin: false,
+};
 
 const loginSlice = createSlice({
   name: "login",
-  initialState: {
-    logged: false,
-    isOpenSignup: false,
-    isOpenLogin: false,
-  },
+  initialState,
   reducers: {
     toggleSignup: (state,_) => {
-        state.isOpenSignup = !state.isOpenSignup;
+      state.isOpenSignup = !state.isOpenSignup;
     },
     toggleLogin: (state,_) =>  {
       state.isOpenLogin = !state.isOpenLogin;
@@ -26,4 +27,4 @@ const loginSlice = createSlice({
 
 export const { toggleSignup, toggleLogin, closeSignup, closeLogin } = loginSlice.actions;
 
-export default loginSlice;
+export default loginSlice.reducer;

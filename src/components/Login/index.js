@@ -9,9 +9,8 @@ import {Form} from 'react-bootstrap';
 // ==IMPORT ACTION==
 import {submitLogin, submitSignup } from '../../actions/login';
 // import {toggleSignup, toggleLogin, submitLogin, submitSignup, closeLogin, closeSignup} from '../../actions/login';
-import {handleFieldChange} from '../../actions/utilities';
-import { toggleSignup, toggleLogin, closeSignup, closeLogin } from "../../reducers/login";
-
+import {handleFieldChange} from '../../slice/utilities';
+import { toggleSignup, toggleLogin, closeSignup, closeLogin } from "../../slice/login";
 
 
 function Login() {
@@ -19,8 +18,8 @@ function Login() {
 
 
   // ==CALL STORE==
-  const {email, password} = useSelector((state) => state.utilities);
-  const {isOpenSignup, isOpenLogin} = useSelector((state) => state.login);
+  const {email, password} = useSelector((state) => state.utilitiesReducer);
+  const {isOpenSignup, isOpenLogin} = useSelector((state) => state.loginReducer);
 
   // == ACTIONS ==
   /**
@@ -28,7 +27,9 @@ function Login() {
  * @handleChange Change input state value 
  */
   const handleChange = (e) => {
-    dispatch(handleFieldChange(e.target.value, e.target.name));
+    dispatch(handleFieldChange({
+      value: e.target.value,
+      name: e.target.name}));
   };
   /**
  * Clicking on Signup button
