@@ -1,51 +1,29 @@
-//==--IMPORT ACTIONS--==
+import { createSlice } from '@reduxjs/toolkit';
 
-import { CLOSE_LOGIN, CLOSE_SIGNUP, TOGGLE_LOGIN, TOGGLE_SIGNUP} from "../actions/login";
 
-export const initialState = {
-  logged: false,
-  isOpenSignup: false,
-  isOpenLogin: false,
-};
+const loginSlice = createSlice({
+  name: "login",
+  initialState: {
+    logged: false,
+    isOpenSignup: false,
+    isOpenLogin: false,
+  },
+  reducers: {
+    toggleSignup: (state,_) => {
+        state.isOpenSignup = !state.isOpenSignup;
+    },
+    toggleLogin: (state,_) =>  {
+      state.isOpenLogin = !state.isOpenLogin;
+    },
+    closeSignup: (state,_) => {
+      state.isOpenSignup = false;
+    },
+    closeLogin: (state,_) => {
+      state.isOpenLogin = false;
+    },
+  }
+});
 
-const reducer = (state = initialState, action = {}) => {
-  switch (action.type) {
+export const { toggleSignup, toggleLogin, closeSignup, closeLogin } = loginSlice.actions;
 
-    /** Display signup modal */
-    case TOGGLE_SIGNUP: {
-      return {
-        ...state,
-        isOpenSignup: !state.isOpenSignup,
-      };
-    }
-
-    /** Display login modal */
-    case TOGGLE_LOGIN: {
-      return {
-        ...state,
-        isOpenLogin: !state.isOpenLogin,
-      };
-    }
-
-    /** close signup modal */
-    case CLOSE_SIGNUP: {
-      return {
-        ...state,
-        isOpenSignup: false,
-      };
-    }
-
-    /** close login modal */
-    case CLOSE_LOGIN: {
-      return {
-        ...state,
-        isOpenLogin: false,
-      };
-    }
-
-    default:
-      return state;
-    }
-};
-
-export default reducer;
+export default loginSlice;

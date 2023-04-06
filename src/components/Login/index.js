@@ -7,14 +7,15 @@ import {Form} from 'react-bootstrap';
 
 
 // ==IMPORT ACTION==
-import {toggleSignup, toggleLogin, submitLogin, submitSignup, closeLogin, closeSignup} from '../../actions/login';
+import {submitLogin, submitSignup } from '../../actions/login';
+// import {toggleSignup, toggleLogin, submitLogin, submitSignup, closeLogin, closeSignup} from '../../actions/login';
 import {handleFieldChange} from '../../actions/utilities';
+import { toggleSignup, toggleLogin, closeSignup, closeLogin } from "../../reducers/login";
+
 
 
 function Login() {
   const dispatch = useDispatch();
-
-
 
 
   // ==CALL STORE==
