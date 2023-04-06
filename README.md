@@ -1,4 +1,19 @@
-# Getting Started with Create React App
+# Comitedesfetes
+
+Site du comité des fêtes de Thénouville Projet en développement, ce référer aux cahier des charges dans le dossier 'docs' à la racine du projet.
+
+## Technologie
+
+create-react-app => un build setup sans config
+react-boostrap et bootstrap=> bibliothéque de composant react
+axios => Client Http pour la consommation de l'API
+react-redux => redux pour react
+redux => conteneur d'état Redux
+@reduxjs/toolkit => Redux toolkit
+react-router et react-router-dom => React Router
+
+
+### Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
