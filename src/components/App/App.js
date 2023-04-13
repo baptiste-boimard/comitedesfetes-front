@@ -3,6 +3,7 @@
 import Header from '../Header';
 import Menu from '../Menu';
 import InfoFrist from '../InfoFirst';
+import Slider from '../Slider';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Header />
       <Menu />
       <InfoFrist />
+      <Slider />
     </>
   // ==--COMPONENT APP--==
   );
