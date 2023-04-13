@@ -1,0 +1,11 @@
+.infoFirst {
+  width: 1000px;
+  height: 100px;
+  margin: auto;
+  display: flex;
+  flex-direction: row !important;
+
+  &-image {
+    max-width: 142px;
+  }
+}
