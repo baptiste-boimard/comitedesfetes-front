@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { fetchUser } from './auth';
+
 const initialState = {
   logged: false,
   isOpenSignup: false,
@@ -22,7 +24,13 @@ const loginSlice = createSlice({
     closeLogin: (state,_) => {
       state.isOpenLogin = false;
     },
-  }
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUser.fulfilled, (state, action) => {
+        state.isOpenLogin = false;
+      })
+  }  ,
 });
 
 export const { toggleSignup, toggleLogin, closeSignup, closeLogin } = loginSlice.actions;

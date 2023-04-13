@@ -11,6 +11,7 @@ react-redux => redux pour react
 redux => conteneur d'état Redux
 @reduxjs/toolkit => Redux toolkit
 react-router et react-router-dom => React Router
+sass => ajout de fonctionalité pour css
 
 
 ### Getting Started with Create React App

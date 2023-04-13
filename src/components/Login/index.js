@@ -7,11 +7,14 @@ import {Form} from 'react-bootstrap';
 
 
 // ==IMPORT ACTION==
-import {submitLogin, submitSignup } from '../../actions/login';
+import {/*submitLogin,*/ submitSignup } from '../../actions/login';
 // import {toggleSignup, toggleLogin, submitLogin, submitSignup, closeLogin, closeSignup} from '../../actions/login';
 import {handleFieldChange} from '../../slice/utilities';
 import { toggleSignup, toggleLogin, closeSignup, closeLogin } from "../../slice/login";
 
+
+// importation de notre thunk middleware auth
+import { fetchUser } from '../../slice/auth';
 
 function Login() {
   const dispatch = useDispatch();
@@ -20,6 +23,7 @@ function Login() {
   // ==CALL STORE==
   const {email, password} = useSelector((state) => state.utilitiesReducer);
   const {isOpenSignup, isOpenLogin} = useSelector((state) => state.loginReducer);
+  // const { emailAuth } = useSelector((state) => state.authReducer);
 
   // == ACTIONS ==
   /**
@@ -61,7 +65,7 @@ function Login() {
  */
   const handleSubmitLogin = (e) => {
   e.preventDefault();
-  dispatch(submitLogin(email, password));
+  dispatch(fetchUser({email, password}));
   };
   /**
  * Clicking close button on signup modal
