@@ -1,9 +1,10 @@
 .header {
 
-  display: flex;
+  margin-top: 1rem;
 
   &-logo {
-    margin-left: 2rem;
+    position: absolute;
+    margin-left: 15rem;
   }
 
   &-card {
