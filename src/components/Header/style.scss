@@ -1,0 +1,29 @@
+.header {
+
+  display: flex;
+
+  &-logo {
+    margin-left: 2rem;
+  }
+
+  &-card {
+    width: 728px;
+    margin: auto;
+    border: 0px !important;
+    text-align: center;
+
+      &--image {
+        width: 728px;
+        border-radius: 0.375rem;
+        margin-bottom: 0px !important;
+      }
+
+      &--body {
+        padding-top: 0rem !important;
+      }
+
+      &--text {
+        font-size: 0.75rem;
+      }
+}
+}

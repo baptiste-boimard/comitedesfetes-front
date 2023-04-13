@@ -1,13 +1,13 @@
 // ==IMPORT COMPONENTS==
 // import Login from '../Login';
-import Banner from '../Banner';
+import Header from '../Header';
 
 
 function App() {
   return (
     // ==--COMPONENT APP--==
     <>
-      <Banner />
+      <Header />
     </>
   // ==--COMPONENT APP--==
   );
