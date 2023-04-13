@@ -11,6 +11,8 @@ import './style.scss'
 
 function Slider() {
   return (
+    
+    //==--COMPONENT SLIDER--==
     <Carousel className="slider">
       <Carousel.Item>
         <img
@@ -50,6 +52,8 @@ function Slider() {
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
+    //==--COMPONENT SLIDER--==
+
   );
 }
 

@@ -10,6 +10,7 @@ import './style.scss'
 
 function InfoFrist() {
   return (
+    // ==--COMPONENT INFOFIRST--==
     <Card className='infoFirst'>
       <Card.Img variant="top" src={info} className="infoFirst-image"/>
       <Card.Body>
@@ -20,9 +21,7 @@ function InfoFrist() {
         <Button variant="primary">Lire l'article</Button>
       </Card.Body>
     </Card>
-   
-    
-
+    // ==--COMPONENT INFOFIRST--==
   );
 }
 

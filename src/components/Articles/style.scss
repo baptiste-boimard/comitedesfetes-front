@@ -1,0 +1,22 @@
+.articles {
+  width: 1000px;
+  margin: auto;
+  display: flex;
+  flex-direction: column !important;
+
+  .article {
+    
+    margin: 0.5rem auto;
+
+    &-card {
+      width: 1000px;
+      margin: auto;
+      display: flex;
+      flex-direction: row !important;
+  
+      &--image {
+        max-width: 142px;
+      }
+    }
+  }
+}

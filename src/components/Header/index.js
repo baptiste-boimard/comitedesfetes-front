@@ -18,7 +18,7 @@ function Header() {
     {/* ==--COMPONENT IMAGE--== */}
 
     {/* ==--COMPONENT CARD--== */}
-      <Card /*style={{ border: 'none' }}*/ className="header-card">
+      <Card className="header-card">
         <Card.Img variant="top" src={banner} className="header-card--image"/>
         <Card.Body className="header-card--body">
           <Card.Title></Card.Title>

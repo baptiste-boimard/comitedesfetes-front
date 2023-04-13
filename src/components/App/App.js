@@ -4,6 +4,7 @@ import Header from '../Header';
 import Menu from '../Menu';
 import InfoFrist from '../InfoFirst';
 import Slider from '../Slider';
+import Articles from '../Articles';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Menu />
       <InfoFrist />
       <Slider />
+      <Articles />
     </>
   // ==--COMPONENT APP--==
   );
