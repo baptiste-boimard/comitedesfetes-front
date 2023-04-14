@@ -15,8 +15,8 @@ function Menu() {
       <NavLink className="menu-button" to="/team">
         <Button variant="outline-primary">L'équipe</Button>{' '}
       </NavLink>
-      
-      <NavLink className="menu-button" to="/team">
+
+      <NavLink className="menu-button" to="/contact">
         <Button variant="outline-secondary">Contact</Button>{' '}
       </NavLink>
 

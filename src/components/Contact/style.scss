@@ -1,0 +1,36 @@
+.contact {
+  margin-top: 3rem !important;
+  border: none !important;
+  width: 840px;
+  margin: auto;
+
+  &-cardContainer {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &-card {
+    margin-bottom: 2rem;
+    width: 300px;
+    border: none !important;
+    flex-direction: row !important;
+    align-items: center;
+
+    &--image {
+      margin-right: 1rem;
+      max-width: 80px;
+    }
+    &--title {
+      font-weight: normal !important;
+      font-size: 1rem !important;
+    }
+  }
+}
+
+.map {
+  max-width: 840px;
+  margin: auto;
+}
