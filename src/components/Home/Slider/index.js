@@ -2,9 +2,9 @@
 import Carousel from 'react-bootstrap/Carousel';
 
 // ==--IMPORT IMAGE--==
-import first from '../../docs/images/first.png'
-import second from '../../docs/images/second.png'
-import third from '../../docs/images/third.png'
+import first from '../../../docs/images/first.png'
+import second from '../../../docs/images/second.png'
+import third from '../../../docs/images/third.png'
 
 // ==--IMPORT STYLE--==
 import './style.scss'

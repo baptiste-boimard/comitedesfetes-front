@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 // ==IMPORT COMPONENTS==
 // ==IMPORT BOOTSTRAP==
 import Card from 'react-bootstrap/Card';
@@ -14,12 +16,16 @@ function Header() {
     <div className="header">
 
     {/* ==--COMPONENT IMAGE--== */}
-    <img src={logo} className="header-logo" alt="logo" />
+    <Link to="/">
+      <img src={logo} className="header-logo" alt="logo" />
+    </Link>
     {/* ==--COMPONENT IMAGE--== */}
 
     {/* ==--COMPONENT CARD--== */}
       <Card className="header-card">
-        <Card.Img variant="top" src={banner} className="header-card--image"/>
+        <Link to="/">
+          <Card.Img variant="top" src={banner} className="header-card--image"/>
+        </Link>
         <Card.Body className="header-card--body">
           <Card.Title></Card.Title>
           <Card.Text className="header-card--text">

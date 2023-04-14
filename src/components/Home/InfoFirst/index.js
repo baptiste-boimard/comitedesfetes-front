@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 // ==--IMPORT IMAGE--==
-import info from '../../docs/images/info.png'
+import info from '../../../docs/images/info.png'
 
 // ==--IMPORT STYLE--==
 import './style.scss'
