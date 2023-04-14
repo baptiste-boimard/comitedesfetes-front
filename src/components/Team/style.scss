@@ -1,0 +1,45 @@
+.team {
+  border: none !important;
+
+  &-title {
+    margin: 1rem auto 0rem !important;
+  }
+
+  &-image {
+    margin: 1rem auto;
+    max-width: 640px;
+  }
+
+  &-text {
+    max-width: 840px;
+    margin: auto;
+  }
+}
+
+.members {
+  border: none !important;
+
+  &-title {
+    margin: 2rem auto!important;
+  }
+
+  &-container {
+    width: 740px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+  }
+
+  .member-card {
+    width: 20rem !important;
+    flex-direction: row !important;
+    margin-bottom: 2rem;
+
+    &--image {
+      max-width: 135px;
+    }
+  }
+}
