@@ -5,6 +5,7 @@ import Menu from '../Menu';
 import InfoFrist from '../InfoFirst';
 import Slider from '../Slider';
 import Articles from '../Articles';
+import Footer from '../Footer';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <InfoFrist />
       <Slider />
       <Articles />
+      <Footer />
     </>
   // ==--COMPONENT APP--==
   );

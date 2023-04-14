@@ -3,7 +3,9 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 // ==--IMPORT IMAGE--==
-import info from '../../docs/images/info.png'
+import art1 from '../../docs/images/art1.png'
+import art2 from '../../docs/images/art2.png'
+import art3 from '../../docs/images/art3.png'
 
 // ==--IMPORT STYLE--==
 import './style.scss'
@@ -14,11 +16,11 @@ function Articles() {
     {/* ==--COMPONENT ARTICLE 1--==*/}
       <article className='article'>
         <Card className='article-card'>
-          <Card.Img variant="top" src={info} className="article-card--image"/>
+          <Card.Img variant="top" src={art1} className="article-card--image"/>
           <Card.Body>
-            <Card.Title>Info Spéciale</Card.Title>
+            <Card.Title>Article 1</Card.Title>
             <Card.Text>
-              Il parait qu'il fait bon vivre à Theillement
+              Article 1
             </Card.Text>
             <Button variant="primary">Lire l'article</Button>
           </Card.Body>
@@ -29,11 +31,11 @@ function Articles() {
       {/* ==--COMPONENT ARTICLE 2--==*/}
       <article className='article'>
         <Card className='article-card'>
-          <Card.Img variant="top" src={info} className="article-card--image"/>
+          <Card.Img variant="top" src={art2} className="article-card--image"/>
           <Card.Body>
-            <Card.Title>Info Spéciale</Card.Title>
+            <Card.Title>Article 2</Card.Title>
             <Card.Text>
-              Il parait qu'il fait bon vivre à Theillement
+              Article 2
             </Card.Text>
             <Button variant="primary">Lire l'article</Button>
           </Card.Body>
@@ -44,11 +46,11 @@ function Articles() {
       {/* ==--COMPONENT ARTICLE 3--==*/}
       <article className='article'>
         <Card className='article-card'>
-          <Card.Img variant="top" src={info} className="article-card--image"/>
+          <Card.Img variant="top" src={art3} className="article-card--image"/>
           <Card.Body>
-            <Card.Title>Info Spéciale</Card.Title>
+            <Card.Title>Article 3</Card.Title>
             <Card.Text>
-              Il parait qu'il fait bon vivre à Theillement
+              Article 3
             </Card.Text>
             <Button variant="primary">Lire l'article</Button>
           </Card.Body>

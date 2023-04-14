@@ -11,8 +11,8 @@ function Menu() {
     {/* ==--COMPONENT MENU--== */}
       <Button variant="outline-primary">L'équipe</Button>{' '}
       <Button variant="outline-secondary">Contact</Button>{' '}
-      <Button variant="outline-success">Evènement</Button>{' '}
-      <Button variant="outline-warning">Archive</Button>{' '}
+      <Button variant="outline-success">Evènements</Button>{' '}
+      <Button variant="outline-warning">Archives</Button>{' '}
       <Button variant="outline-danger">Autre</Button>{' '}
       {/* ==--COMPONENT MENU--== */}
     </div>
