@@ -1,3 +1,6 @@
+import { NavLink } from 'react-router-dom';
+
+
 // ==--IMPORT COMPONENTS--==
 // ==--IMPORT BOOTSTRAP--==
 import Nav from 'react-bootstrap/Nav';
@@ -9,19 +12,34 @@ import './style.scss'
 
 function Footer() {
   return (
+
+    // ==-- COMPONENT FOOTER --==
     <Nav defaultActiveKey="/home" as="ul" className="footer">
-      <Nav.Item as="li">
-        <Nav.Link href="/home">FAQ</Nav.Link>
-      </Nav.Item>
-      <Nav.Item as="li">
-        <Nav.Link eventKey="link-1">Mentions Légales</Nav.Link>
-      </Nav.Item>
-      <Nav.Item as="li">
-        <Nav.Link eventKey="link-2">Politique de confidentialité</Nav.Link>
-      </Nav.Item>
-      <Nav.Item as="li">
-        <Nav.Link eventKey="link-3">Plan du site</Nav.Link>
-      </Nav.Item>
+
+      <NavLink to="/faq">
+        <Nav.Item as="li">
+          <Nav.Link href="/faq">FAQ</Nav.Link>
+        </Nav.Item>
+      </NavLink>
+
+      <NavLink className="menu-button" to="/legals">
+        <Nav.Item as="li">
+          <Nav.Link href="/legals">Mentions Légales</Nav.Link>
+        </Nav.Item>
+      </NavLink>
+
+      <NavLink className="menu-button" to="/confidentiality">
+        <Nav.Item as="li">
+          <Nav.Link href="/confidentiality">Politique de confidentialité</Nav.Link>
+        </Nav.Item>
+      </NavLink>
+       
+      <NavLink className="menu-button" to="/plan">
+        <Nav.Item as="li">
+          <Nav.Link href="/plan">Plan du site</Nav.Link>
+        </Nav.Item>
+      </NavLink>
+
     </Nav>
   );
 }

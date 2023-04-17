@@ -20,15 +20,15 @@ function Menu() {
         <Button variant="outline-secondary">Contact</Button>{' '}
       </NavLink>
 
-      <NavLink className="menu-button" to="/team">
+      <NavLink className="menu-button" to="/events">
         <Button variant="outline-success">Evènements</Button>{' '}
       </NavLink>
 
-      <NavLink className="menu-button" to="/team">
+      <NavLink className="menu-button" to="/archives">
         <Button variant="outline-warning">Archives</Button>{' '}
       </NavLink>
 
-      <NavLink className="menu-button" to="/team">
+      <NavLink className="menu-button" to="/others">
         <Button variant="outline-danger">Autre</Button>{' '}
       </NavLink>
       {/* ==--COMPONENT MENU--== */}
