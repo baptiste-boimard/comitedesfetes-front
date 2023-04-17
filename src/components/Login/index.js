@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 
 // ==IMPORT BOOTSTRAP==
 import {Button} from 'react-bootstrap';
@@ -7,23 +8,27 @@ import {Form} from 'react-bootstrap';
 
 
 // ==IMPORT ACTION==
-import {/*submitLogin,*/ submitSignup } from '../../actions/login';
-// import {toggleSignup, toggleLogin, submitLogin, submitSignup, closeLogin, closeSignup} from '../../actions/login';
-import {handleFieldChange} from '../../slice/utilities';
-import { toggleSignup, toggleLogin, closeSignup, closeLogin } from "../../slice/login";
+import { disconnectAdmin } from '../../slice/login';
+import { handleFieldChange } from '../../slice/utilities';
 
-
-// importation de notre thunk middleware auth
+// ==-- IMPORT THUNK MIDDLEWARE --==
 import { fetchUser } from '../../slice/auth';
+
+
+
+
+
 
 function Login() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+// ==CALL STORE==
+const { email, password } = useSelector((state) => state.utilitiesReducer);
+const { adminLogged } = useSelector((state) => state.loginReducer);
+// const { emailAuth } = useSelector((state) => state.authReducer);
 
 
-  // ==CALL STORE==
-  const {email, password} = useSelector((state) => state.utilitiesReducer);
-  const {isOpenSignup, isOpenLogin} = useSelector((state) => state.loginReducer);
-  // const { emailAuth } = useSelector((state) => state.authReducer);
 
   // == ACTIONS ==
   /**
@@ -36,28 +41,11 @@ function Login() {
       name: e.target.name}));
   };
   /**
- * Clicking on Signup button
- * @handleToggleSignup open a modal with signup form
+ * Clicking cancel button on login modal
+ * @handleCancelLogin redirect to "/"
  */
-  const handleToggleSignup = () => {
-    dispatch(closeLogin());
-    dispatch(toggleSignup());
-  };
-  /**
- * Clicking on login button
- * @returns open a modal with login form
- */
-  const handleToggleLogin = () => {
-    dispatch(closeSignup());
-    dispatch(toggleLogin());
-  };
-  /**
-   * Clicking submit signup button
-   * @submitLogin POST request to API for signup users
-   */
-  const handleSubmitSignup = (e) => {
-    e.preventDefault();
-    dispatch(submitSignup(email, password));
+  const handleCancelModal = () => {
+    navigate("/");
   };
   /**
  * Clicking submit login button
@@ -68,100 +56,27 @@ function Login() {
   dispatch(fetchUser({email, password}));
   };
   /**
- * Clicking close button on signup modal
- * @handleCloseSignup close signup modal
- */
-  const handleCloseSignup = (e) => {
-    dispatch(closeSignup());
+   * Clicking on disconnect button
+   @handleDisconnect Disconnect admin
+   */
+  const handleDisconnect = () => {
+    dispatch(disconnectAdmin());
   };
-  /**
- * Clicking close button on login modal
- * @handleCloseSignup close login modal
- */
-  const handleCloseLogin = (e) => {
-    dispatch(closeLogin());
-  };
-
-
 
 
   return (
-    // ==-- COMPONENT HEADER--==
-    <header className="header">
 
+    <card className="login">
 
-      {/* ==-- BUTTON SIGNUP AND LOGIN--== */}
-      <Button 
-        type="button"
-        onClick={handleToggleSignup}
-        variant="primary"
-      >
-        Inscription
-      </Button>{' '}
-      <Button
-        type="button"
-        onClick={handleToggleLogin}
-        variant="primary"
-      >
-        Connexion
-      </Button>{' '}
-      {/* ==-- BUTTON SIGNUP AND LOGIN--== */}
-      
-      {/* OPENING MODAL SIGNUP */}
-      {isOpenSignup && (
-        <div
-        className="modal show"
-        style={{ display: 'block', position: 'initial' }}
-        >
-          <Modal.Dialog>
-            <Modal.Header closeButton onClick={handleCloseSignup}>
-              <Modal.Title>Inscription</Modal.Title>
-            </Modal.Header>
-
-            <Modal.Body>
-              <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Control type="email"
-                                placeholder="Entrer votre Email"
-                                value={email}
-                                name="email"
-                                title="Email"
-                                onChange={handleChange}
-                  />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Control type="password" 
-                                placeholder="Mot de passe"
-                                value={password}
-                                name="password"
-                                title="Mot de passe"
-                                onChange={handleChange}
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                </Form.Group>
-              </Form>
-            </Modal.Body>
-
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleCloseSignup}>Annuler</Button>
-              <Button variant="primary" onClick={handleSubmitSignup}>S'incrire</Button>
-            </Modal.Footer>
-          </Modal.Dialog>
-        </div>
-      )}
-      {/* OPENING MODAL SIGNUP */}
-
-      {/* OPENING MODAL LOGIN */}
-      {isOpenLogin && (
+      {/* ==-- MODAL LOGIN --== */}
+        {(!adminLogged && 
         <div
         className="modal show"
         style={{ display: 'block', position: 'initial' }}
         >
           <Modal.Dialog >
-            <Modal.Header closeButton onClick={handleCloseLogin}>
-              <Modal.Title>Connexion</Modal.Title>
+            <Modal.Header>
+              <Modal.Title>Veuillez vous connecté</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
@@ -191,16 +106,37 @@ function Login() {
             </Modal.Body>
 
             <Modal.Footer>
-              <Button variant="secondary" onClick={handleCloseLogin}>Annuler</Button>
+              <Button variant="secondary" onClick={handleCancelModal}>Annuler</Button>
               <Button variant="primary" onClick={handleSubmitLogin}>Se Connecter</Button>
             </Modal.Footer>
           </Modal.Dialog>
         </div>
-      )}
-      {/* OPENING MODAL LOGIN */}
+        )}
+      {/* ==-- MODAL LOGIN --== */}
 
-    </header>
-    // ==-- COMPONENT HEADER--==
+      {/* ==-- MODAL DISCONNECT --== */}
+      {(adminLogged && 
+        <div
+        className="modal show"
+        style={{ display: 'block', position: 'initial' }}
+        >
+          <Modal.Dialog >
+            <Modal.Header>
+              <Modal.Title>Vous êtes connecté</Modal.Title>
+            </Modal.Header>
+
+            
+
+            <Modal.Footer>
+              <Button variant="primary" onClick={handleCancelModal}>Accueil</Button>
+              <Button variant="primary" onClick={handleDisconnect}>Se déconnecter</Button>
+            </Modal.Footer>
+          </Modal.Dialog>
+        </div>
+        )}
+      {/* ==-- MODAL DISCONNECT --== */}
+    </card>
+
   );
 }
 

@@ -3,36 +3,28 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchUser } from './auth';
 
 const initialState = {
-  logged: false,
-  isOpenSignup: false,
-  isOpenLogin: false,
+  adminLogged: false,
 };
 
 const loginSlice = createSlice({
   name: "login",
   initialState,
   reducers: {
-    toggleSignup: (state,_) => {
-      state.isOpenSignup = !state.isOpenSignup;
-    },
-    toggleLogin: (state,_) =>  {
-      state.isOpenLogin = !state.isOpenLogin;
-    },
-    closeSignup: (state,_) => {
-      state.isOpenSignup = false;
-    },
-    closeLogin: (state,_) => {
-      state.isOpenLogin = false;
+    disconnectAdmin: (state,_) => {
+      state.adminLogged = false;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchUser.fulfilled, (state, action) => {
-        state.isOpenLogin = false;
+      .addCase(fetchUser.fulfilled, (state,_) => {
+        state.adminLogged = true;
+      })
+      .addCase(fetchUser.rejected, (state,_) => {
+        state.adminLogged = true;
       })
   }  ,
 });
 
-export const { toggleSignup, toggleLogin, closeSignup, closeLogin } = loginSlice.actions;
+export const { disconnectAdmin } = loginSlice.actions;
 
 export default loginSlice.reducer;

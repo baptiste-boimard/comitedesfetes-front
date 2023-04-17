@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 // ==IMPORT COMPONENTS==
 // import Login from '../Login';
@@ -15,14 +16,24 @@ import Faq from '../Faq';
 import Legals from '../Legals';
 import Confidentiality from '../Confidentiality';
 import Plan from '../Plan';
+import Admin from '../Admin';
+import AdminLogged from '../Admin/Adminlogged';
 
 
 function App() {
+
+  // ==CALL STORE==
+  const { adminLogged } = useSelector((state) => state.loginReducer);
+
+
+
   return (
+
     // ==--COMPONENT APP--==
     <>
       <Header />
       <Menu />
+      {(adminLogged && <AdminLogged />)}
       <Routes>
         <Route path={"/"} element={<Home />} />
         <Route path={"/team"} element={<Team />} />
@@ -34,7 +45,7 @@ function App() {
         <Route path={"/legals"} element={<Legals />} />
         <Route path={"/confidentiality"} element={<Confidentiality />} />
         <Route path={"/plan"} element={<Plan />} />
-
+        <Route path={"/admin"} element={<Admin />} />
       </Routes>
       <Footer />
     </>

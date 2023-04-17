@@ -37,23 +37,23 @@ const authSlice = createSlice({
     builder
       .addCase(fetchUser.pending, (state, action) => {
         state.status = 'loading'
-        console.log('fdfdfdf');
+        console.log('loading');
       })
       .addCase(fetchUser.fulfilled, (state, action) => {
         state.status = 'suceeded';
         // => provoque les changements dans les slices suivants
         // dans leur extraReducers
-        // loginSlice => isOpenLogin = false
-
-        console.log('SUCESS');
-        // state.email = "coucou@coucou";
+        // loginSlice => adminLogged = true
+        console.log('suceeded');
         console.log(action);
-        // const coucou = store.dispatch();
-        // loginSlice.caseReducers.closeLogin(state, action);
+
       })
       .addCase(fetchUser.rejected, (state, action) => {
         state.status = 'failed';
-        console.log('erreur ppppououoahhha');
+        console.log('failed');
+        // => provoque les changements dans les slices suivants
+        // dans leur extraReducers
+        // loginSlice => adminLogged = true
       })
   },
 })

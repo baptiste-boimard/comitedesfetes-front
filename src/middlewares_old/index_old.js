@@ -1,5 +1,5 @@
 // =-- IMPORT MIDDLEWARES --==
-import auth from './auth';
+import auth from './auth_old';
 
 const middlewareCompose = [
   auth,

@@ -1,0 +1,13 @@
+.management {
+  width: 1028px;
+  margin: auto;
+
+  &-title {
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6 !important;
+  }
+
+  &-body {
+    margin: auto;
+  }
+}

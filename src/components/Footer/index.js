@@ -40,6 +40,12 @@ function Footer() {
         </Nav.Item>
       </NavLink>
 
+      <NavLink className="menu-button" to="/admin">
+        <Nav.Item as="li">
+          <Nav.Link href="/admin">Admin</Nav.Link>
+        </Nav.Item>
+      </NavLink>
+
     </Nav>
   );
 }
