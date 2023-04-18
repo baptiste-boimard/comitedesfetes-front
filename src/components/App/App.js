@@ -17,7 +17,7 @@ import Legals from '../Legals';
 import Confidentiality from '../Confidentiality';
 import Plan from '../Plan';
 import Admin from '../Admin';
-import AdminLogged from '../Admin/Adminlogged';
+import AdminLogged from '../Admin/AdminLogged';
 
 
 function App() {

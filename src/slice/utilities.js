@@ -6,7 +6,7 @@ const initialState = {
 };
 
 const utilitiesSlice = createSlice({
-  name: "utilies",
+  name: "utilities",
   initialState,
   reducers: {
     handleFieldChange: (state, action) => {
