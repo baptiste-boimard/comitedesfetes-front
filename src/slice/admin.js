@@ -9,18 +9,21 @@ const adminSlice = createSlice({
   name: "admin",
   initialState,
   reducers: {
-    openAddAdmin: (state,_) => {
+    toogleAddAdmin: (state,_) => {
       state.isOpenAddAdmin = !state.isOpenAddAdmin;
     },
-    isOpenManageAdmin: (state,_) => {
+    toogleManageAdmin: (state,_) => {
       state.isOpenManageAdmin = !state.isOpenManageAdmin;
     },
     closeAddAdmin: (state,_) => {
       state.isOpenAddAdmin = false;
     },
+    closeManageAdmin: (state,_) => {
+      state.isOpenManageAdmin = false;
+    },
   },
 });
 
-export const { openAddAdmin, openManageAdmin, closeAddAdmin } = adminSlice.actions;
+export const { toogleAddAdmin, toogleManageAdmin, closeAddAdmin, closeManageAdmin } = adminSlice.actions;
 
 export default adminSlice.reducer;

@@ -14,7 +14,7 @@ import {Form} from 'react-bootstrap';
 import './style.scss'
 
 // ==IMPORT ACTION==
-import { openAddAdmin, openManageAdmin, closeAddAdmin } from '../../../slice/admin';
+import { toogleAddAdmin, toogleManageAdmin, closeAddAdmin, closeManageAdmin } from '../../../slice/admin';
 import { handleFieldChange } from '../../../slice/utilities';
 
 
@@ -40,15 +40,17 @@ function AdminManagement() {
    * Clicking cancel button
    * @openManageAdmin Open Modal for admin management
    */
-  const handleClickLManage = () => {
-    dispatch(openManageAdmin());
+  const handleClickManage = () => {
+    dispatch(toogleManageAdmin());
+    dispatch(closeAddAdmin());
   };
   /**
    * Clicking Add admin button
    * @openAddAdmin Open Modal for add an admin
    */
   const handleClickAdd = () => {
-    dispatch(openAddAdmin());
+    dispatch(toogleAddAdmin());
+    dispatch(closeManageAdmin());
   };
   /**
    * Clicking cancel button
@@ -56,7 +58,14 @@ function AdminManagement() {
    */
   const handleCloseAddAdmin = () => {
     dispatch(closeAddAdmin());
-  }
+  };
+  /**
+   * Clicking cancel button
+   * @closeManageAdmin Close Modal admin management
+   */
+   const handleCloseManageAdmin = () => {
+    dispatch(closeManageAdmin());
+  };
 
   return (
 
@@ -64,8 +73,36 @@ function AdminManagement() {
     <Card className="management">
       <Card.Title className="management-title" >Administration des comptes</Card.Title>
       <Card.Body className="management-body" >
-        <Button variant="primary" onClick={handleClickLManage}>Gérer les comptes admin</Button>{' '}
+        <Button variant="primary" onClick={handleClickManage}>Gérer les comptes admin</Button>{' '}
         <Button variant="primary" on onClick={handleClickAdd}>Ajouter un admin</Button>
+
+      {/* ==-- OPENING MODAL ACCOUNT MANAGEMENT--== */}
+      {(isOpenManageAdmin && 
+        <div
+          className="modal show"
+          style={{ display: 'block', position: 'initial' }}
+        >
+          <Modal.Dialog>
+            <Modal.Header>
+              <Modal.Title>Modal title</Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body>
+              <p>Modal body text goes here.</p>
+            </Modal.Body>
+
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleCloseManageAdmin}>Annuler</Button>
+              <Button variant="primary">Appliquer</Button>
+            </Modal.Footer>
+          </Modal.Dialog>
+        </div>
+      )}
+      {/* ==-- OPENING MODAL ACCOUNT MANAGEMENT--== */}
+
+
+
+
 
         {/* ==-- OPENING MODAL SIGNUP --== */}
         {isOpenAddAdmin && (

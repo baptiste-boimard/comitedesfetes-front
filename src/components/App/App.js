@@ -18,14 +18,13 @@ import Confidentiality from '../Confidentiality';
 import Plan from '../Plan';
 import Admin from '../Admin';
 import AdminLogged from '../Admin/AdminLogged';
+import NewArticle from '../Articles/NewArticle';
 
 
 function App() {
 
   // ==CALL STORE==
   const { adminLogged } = useSelector((state) => state.loginReducer);
-
-
 
   return (
 
@@ -46,6 +45,7 @@ function App() {
         <Route path={"/confidentiality"} element={<Confidentiality />} />
         <Route path={"/plan"} element={<Plan />} />
         <Route path={"/admin"} element={<Admin />} />
+        <Route path={"/newarticle"} element={<NewArticle />} />
       </Routes>
       <Footer />
     </>
