@@ -12,6 +12,7 @@ redux => conteneur d'état Redux
 @reduxjs/toolkit => Redux toolkit
 react-router et react-router-dom => React Router
 sass => ajout de fonctionalité pour css
+tinymce => editor Wysiwyg pour le site (editeur de text)
 
 
 ### Getting Started with Create React App
