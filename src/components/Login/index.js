@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router';
 import {Button} from 'react-bootstrap';
 import {Modal} from 'react-bootstrap';
 import {Form} from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
 
 
 // ==IMPORT ACTION==
@@ -66,7 +67,7 @@ const { adminLogged } = useSelector((state) => state.loginReducer);
 
   return (
 
-    <card className="login">
+    <Card className="login">
 
       {/* ==-- MODAL LOGIN --== */}
         {(!adminLogged && 
@@ -100,7 +101,7 @@ const { adminLogged } = useSelector((state) => state.loginReducer);
                                   onChange={handleChange}
                   />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Group className="mb-3" controlId="formBhandleSubmitLoginasicCheckbox">
                 </Form.Group>
               </Form>
             </Modal.Body>
@@ -135,7 +136,7 @@ const { adminLogged } = useSelector((state) => state.loginReducer);
         </div>
         )}
       {/* ==-- MODAL DISCONNECT --== */}
-    </card>
+    </Card>
 
   );
 }

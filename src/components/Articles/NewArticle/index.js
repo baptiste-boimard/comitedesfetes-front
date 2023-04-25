@@ -1,6 +1,11 @@
 import { Editor } from '@tinymce/tinymce-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRef } from 'react';
+import Papa from 'papaparse';
+
+import { useCSVReader } from 'react-papaparse';
+import { usePapaParse } from 'react-papaparse';
+
 
 // ==IMPORT BOOTSTRAP==
 import Card from 'react-bootstrap/Card';
@@ -12,13 +17,18 @@ import './style.scss'
 // ==IMPORT ACTION==
 import { saveTinymce } from '../../../slice/tinymce';
 
+// ==-- IMPORT THUNK MIDDLEWARE --==
+import { uploadToGdrive, downloadFromGdrive } from '../../../slice/tinymce';
+
+
 function NewArticle() {
 
   const dispatch = useDispatch();
   const editorRef = useRef(null);
+  const {readRemoteFile} = usePapaParse();
 
 // ==CALL STORE==
-const { saveTinymceContent } = useSelector((state) => state.tinymceReducer);
+const { saveTinymceContent, loadTinymceContent } = useSelector((state) => state.tinymceReducer);
 
 
   // == ACTIONS ==
@@ -32,11 +42,43 @@ const { saveTinymceContent } = useSelector((state) => state.tinymceReducer);
   };
   const save = () => {
     const myContent = editorRef.current.getContent();
-    console.log(myContent);
-    dispatch(saveTinymce(myContent));
+    console.log('DEPAERT COMPONEENT',myContent);
+    dispatch(uploadToGdrive(myContent));
   };
-  const load = () => {
-    editorRef.current.setContent(saveTinymceContent);
+  const load = async () => {
+    const coucou = await dispatch(downloadFromGdrive());
+    console.log(coucou);
+    editorRef.current.setContent(coucou.payload);
+
+
+    //PAPAPARSE
+
+    // const file = fs.createReadStream(result);
+    //   Papa.parse(coucou, {
+    //     download: true,
+    //     delimiter:" ",
+    //     // header: true,
+    //     // worker: true,
+    //     complete: function(result) {
+    //         console.log(result.data);
+    //     }
+    // });
+    //PAPAPARSE
+
+
+
+    //PAPAPARSE REACT
+
+
+
+
+
+
+
+
+    //PAPAPARSE REACT
+
+
   };
 
 
@@ -68,6 +110,7 @@ const { saveTinymceContent } = useSelector((state) => state.tinymceReducer);
             here we add custom filepicker only to Image dialog
           */
           file_picker_types: 'image',
+          // images_upload_url: 'postAcceptor.php',
           /* and here's our custom image picker*/
           file_picker_callback: (cb, value, meta) => {
             const input = document.createElement('input');
@@ -88,8 +131,8 @@ const { saveTinymceContent } = useSelector((state) => state.tinymceReducer);
                 const blobCache = editorRef.current.editorUpload.blobCache;
 
                 const base64 = reader.result.split(',')[1];
-      <button onClick={log}>Log editor content</button>
-      const blobInfo = blobCache.create(id, file, base64);
+                <button onClick={log}>Log editor content</button>
+                const blobInfo = blobCache.create(id, file, base64);
                 blobCache.add(blobInfo);
 
                 /* call the callback and populate the Title field with the file name */
@@ -129,3 +172,13 @@ const { saveTinymceContent } = useSelector((state) => state.tinymceReducer);
 }
 
 export default NewArticle;
+
+
+
+
+// ligne pour coinversion bas64 to image
+// var image = new Image();
+
+// image.src = 'data:image/png;base64,iVBORw0K...';
+
+// document.body.appendChild(image);

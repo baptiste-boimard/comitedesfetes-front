@@ -18,31 +18,31 @@ function Footer() {
 
       <NavLink to="/faq">
         <Nav.Item as="li">
-          <Nav.Link href="/faq">FAQ</Nav.Link>
+          <p>FAQ</p>
         </Nav.Item>
       </NavLink>
 
       <NavLink className="menu-button" to="/legals">
         <Nav.Item as="li">
-          <Nav.Link href="/legals">Mentions Légales</Nav.Link>
+          <p>Mentions Légales</p>
         </Nav.Item>
       </NavLink>
 
       <NavLink className="menu-button" to="/confidentiality">
         <Nav.Item as="li">
-          <Nav.Link href="/confidentiality">Politique de confidentialité</Nav.Link>
+          <p>Politique de confidentialité</p>
         </Nav.Item>
       </NavLink>
        
       <NavLink className="menu-button" to="/plan">
         <Nav.Item as="li">
-          <Nav.Link href="/plan">Plan du site</Nav.Link>
+          <p>Plan du site</p>
         </Nav.Item>
       </NavLink>
 
       <NavLink className="menu-button" to="/admin">
         <Nav.Item as="li">
-          <Nav.Link href="/admin">Admin</Nav.Link>
+          <p>Admin</p>
         </Nav.Item>
       </NavLink>
 

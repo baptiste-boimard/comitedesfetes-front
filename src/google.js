@@ -29,16 +29,36 @@ const drive = google.drive({
 
 const filePath = path.join(__dirname, 'art1.png');
 
-async function uploadFile () {
+// async function uploadFile (content) {
+//   try {
+//     const response = await drive.files.create({
+//       requestBody: {
+//         name: 'essai.png',
+//         mimeType: 'image/png',
+//       },
+//       media: {
+//         mimeType: 'image/png',
+//         body: fs.createReadStream(filePath),
+//       }
+//     })
+
+//   console.log(response.data);
+
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// };
+
+async function uploadFile (content) {
   try {
     const response = await drive.files.create({
       requestBody: {
-        name: 'essai.png',
-        mimeType: 'image/png',
+        name: 'coucou.csv',
+        mimeType: 'text/csv',
       },
       media: {
-        mimeType: 'image/png',
-        body: fs.createReadStream(filePath),
+        mimeType: 'text/csv',
+        body: content,
       }
     })
 
@@ -48,7 +68,6 @@ async function uploadFile () {
     console.log(error.message);
   }
 };
-
 
 async function deleteFile() {
   try {
@@ -99,4 +118,5 @@ async function renameUploadedFile() {
   }
 }
 
-renameUploadedFile();
+
+export { uploadFile };

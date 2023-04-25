@@ -17,7 +17,6 @@ import './style.scss'
 import { toogleAddAdmin, toogleManageAdmin, closeAddAdmin, closeManageAdmin } from '../../../slice/admin';
 import { handleFieldChange } from '../../../slice/utilities';
 
-
 function AdminManagement() {
 
   const dispatch = useDispatch();
@@ -74,7 +73,7 @@ function AdminManagement() {
       <Card.Title className="management-title" >Administration des comptes</Card.Title>
       <Card.Body className="management-body" >
         <Button variant="primary" onClick={handleClickManage}>Gérer les comptes admin</Button>{' '}
-        <Button variant="primary" on onClick={handleClickAdd}>Ajouter un admin</Button>
+        <Button variant="primary" onClick={handleClickAdd}>Ajouter un admin</Button>
 
       {/* ==-- OPENING MODAL ACCOUNT MANAGEMENT--== */}
       {(isOpenManageAdmin && 

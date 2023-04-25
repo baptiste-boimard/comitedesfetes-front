@@ -37,7 +37,6 @@ const authSlice = createSlice({
     builder
       .addCase(fetchUser.pending, (state, action) => {
         state.status = 'loading'
-        console.log('loading');
       })
       .addCase(fetchUser.fulfilled, (state, action) => {
         state.status = 'suceeded';
@@ -50,7 +49,6 @@ const authSlice = createSlice({
       })
       .addCase(fetchUser.rejected, (state, action) => {
         state.status = 'failed';
-        console.log('failed');
         // => provoque les changements dans les slices suivants
         // dans leur extraReducers
         // loginSlice => adminLogged = true

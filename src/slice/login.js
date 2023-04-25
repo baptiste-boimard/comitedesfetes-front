@@ -22,7 +22,7 @@ const loginSlice = createSlice({
       .addCase(fetchUser.rejected, (state,_) => {
         state.adminLogged = true;
       })
-  }  ,
+  },
 });
 
 export const { disconnectAdmin } = loginSlice.actions;
