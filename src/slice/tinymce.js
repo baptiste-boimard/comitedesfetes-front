@@ -32,17 +32,14 @@ const initialState = {
 
 
 export const uploadToGdrive = createAsyncThunk ('tinymce/uploadToGdrive', async (content) => {
-  const response = instance.post('tinymce', {
+  const response = await instance.post('tinymce', {
     content: content
   });
-  console.log('AVANT BASCK', content);
-  console.log('RETOUR FRONT',response);
   return response.data;
 });
 
 export const downloadFromGdrive = createAsyncThunk ('tinymce/downloadFromGdrive', async () => {
   const response = await instance.get('/tinymcedown');
-  console.log('RETOUR BACK',response);
   return response.data
 });
 
@@ -53,33 +50,36 @@ const tinymceSlice = createSlice({
   initialState,
   reducers: {
     saveTinymce: (state,action) => {
-      console.log(action.payload);
-      state.loadTinymceContent = action.payload;
-      console.log(state.loadTinymceContent)
+      state.saveTinymceContent = action.payload;
     },
   },
-  extrareducers: (builder) => {
+  extraReducers(builder) {
     builder
       .addCase(downloadFromGdrive.pending, (state, action) => {
         console.log('loading');
         state.status = 'loading'
-        console.log(action);
 
       })
       .addCase(downloadFromGdrive.fulfilled, (state, action) => {
         state.status = 'suceeded';
-        console.log('suceeded');
-        console.log(action);
-        // state.saveTinymce = action.payload;
+        state.loadTinymceContent = action.payload;
       })
-      .addCase(downloadFromGdrive.rejected, (state, action) => {
+      .addCase(downloadFromGdrive.rejected, (state,_) => {
         state.status = 'failed';
         console.log('failed');
-        console.log(action);
+      })
+      .addCase(uploadToGdrive.pending, (state, action) => {
+        console.log('loading');
+        state.status = 'loading'
 
-        // => provoque les changements dans les slices suivants
-        // dans leur extraReducers
-        // loginSlice => adminLogged = true
+      })
+      .addCase(uploadToGdrive.fulfilled, (state, action) => {
+        state.status = 'suceeded';
+        state.saveTinymceContent = action.payload;
+      })
+      .addCase(uploadToGdrive.rejected, (state,_) => {
+        state.status = 'failed';
+        console.log('failed');
       })
   },
 });
