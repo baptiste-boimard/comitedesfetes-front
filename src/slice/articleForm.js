@@ -6,7 +6,11 @@ const instance = axios.create({
 });
 
 const initialState = {
+  title:"",
   summary:"",
+  date:"",
+  poster:"",
+  author:"",
 };
 
 const articleFormSlice = createSlice({

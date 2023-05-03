@@ -26,7 +26,7 @@ function NewArticle() {
 
 // ==CALL STORE==
 const { loadTinymceContent } = useSelector((state) => state.tinymceReducer);
-const { summary, title, date, poster } = useSelector((state) => state.articleFormReducer);
+const { summary, title, date, poster, author } = useSelector((state) => state.articleFormReducer);
 
 
   // == ACTIONS ==
@@ -48,7 +48,7 @@ const { summary, title, date, poster } = useSelector((state) => state.articleFor
   };
   const saveButton = (e) => {
     e.preventDefault();
-    console.log('coucou');
+    console.log(title, summary, date, poster, author);
   }
 
 
@@ -69,7 +69,7 @@ const { summary, title, date, poster } = useSelector((state) => state.articleFor
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Résumé de l'événement</Form.Label>
-          <Form.Control type="password" placeholder="Taper un résumé de l'événement" value={summary} />
+          <Form.Control type="text" placeholder="Taper un résumé de l'événement" value={summary} />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicDate">
           <Form.Label>Date de l'événement</Form.Label>
@@ -138,10 +138,8 @@ const { summary, title, date, poster } = useSelector((state) => state.articleFor
                   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }',
                           selector: 'textarea',
                           skin: 'oxide-dark',
-                          plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
-                          toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-                          tinycomments_mode: 'embedded',
-                          tinycomments_author: 'Author name',
+                          plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+                          toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | spellcheckdialog | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
                           mergetags_list: [
                             { value: 'First.Name', title: 'First Name' },
                             { value: 'Email', title: 'Email' },
@@ -156,7 +154,7 @@ const { summary, title, date, poster } = useSelector((state) => state.articleFor
             {/* //==-- COMPONENT TINYMCE --== */}
 
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicAuthor">
+        <Form.Group className="mb-3" controlId="formBasicAuthor" value={author}>
           <Form.Label>Auteur</Form.Label>
           <Form.Control type="text" placeholder="Taper votre nom" />
         </Form.Group>
