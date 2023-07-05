@@ -17,6 +17,9 @@ import './style.scss'
 import { toogleAddAdmin, toogleManageAdmin, closeAddAdmin, closeManageAdmin } from '../../../slice/admin';
 import { handleFieldChange } from '../../../slice/utilities';
 
+// ==-- IMPORT THUNK MIDDLEWARE --==
+import { addAdmin } from '../../../slice/admin';
+
 function AdminManagement() {
 
   const dispatch = useDispatch();
@@ -62,9 +65,17 @@ function AdminManagement() {
    * Clicking cancel button
    * @closeManageAdmin Close Modal admin management
    */
-   const handleCloseManageAdmin = () => {
+  const handleCloseManageAdmin = () => {
     dispatch(closeManageAdmin());
   };
+  /**
+   * Clicking on Ajouter un admin button
+   * @addAdmin Add an admin to DB
+   */
+  const handleSubmitSignup = () => {
+    dispatch(addAdmin({email, password}));
+  }
+
 
   return (
 
@@ -142,7 +153,7 @@ function AdminManagement() {
 
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleCloseAddAdmin}>Annuler</Button>
-                <Button variant="primary" /*onClick={handleSubmitSignup}*/>Ajouter</Button>
+                <Button variant="primary" onClick={handleSubmitSignup}>Ajouter</Button>
               </Modal.Footer>
             </Modal.Dialog>
           </div>
