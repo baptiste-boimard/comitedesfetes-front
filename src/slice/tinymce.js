@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL:'https://git.heroku.com/comitedesfetes.git',
+  baseURL:'https://comitedesfetes-12d9ea5f0051.herokuapp.com/',
 });
 
 // const CLIENT_ID = '510042688421-1u8m29imkhtflquik2v6g9lf576kfn61.apps.googleusercontent.com';

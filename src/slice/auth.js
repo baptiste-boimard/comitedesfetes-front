@@ -6,7 +6,7 @@ import axios from 'axios';
 
 /** Instance of AXIOS with options */
 const instance = axios.create({
-  baseURL:'https://git.heroku.com/comitedesfetes.git',
+  baseURL:'https://comitedesfetes-12d9ea5f0051.herokuapp.com/',
 });
 
 const initialState = {
@@ -16,9 +16,10 @@ const initialState = {
 
 export const fetchUser = createAsyncThunk ('auth/fetchUser', async ({email, password}) => {
   const response = await instance.post('/login', {
-    email,
-    password,
+    email: email,
+    password: password,
   });
+  console.log(email, password);
   return response.data;
 });
 

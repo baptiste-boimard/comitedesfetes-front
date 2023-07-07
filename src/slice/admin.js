@@ -3,7 +3,7 @@ import axios from 'axios';
 
 /** Instance of AXIOS with options */
 const instance = axios.create({
-  baseURL:'https://git.heroku.com/comitedesfetes.git',
+  baseURL:'https://comitedesfetes-12d9ea5f0051.herokuapp.com/',
 });
 
 const initialState = {
