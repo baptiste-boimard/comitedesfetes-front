@@ -4,6 +4,7 @@ import { fetchUser } from './auth';
 
 const initialState = {
   adminLogged: false,
+  msgLogin: '',
 };
 
 const loginSlice = createSlice({
@@ -19,8 +20,9 @@ const loginSlice = createSlice({
       .addCase(fetchUser.fulfilled, (state,_) => {
         state.adminLogged = true;
       })
-      .addCase(fetchUser.rejected, (state,_) => {
-        state.adminLogged = true;
+      .addCase(fetchUser.rejected, (state,action) => {
+        state.adminLogged = false;
+        state.msgLogin = action.payload.message;
       })
   },
 });

@@ -26,7 +26,7 @@ function Login() {
 
 // ==CALL STORE==
 const { email, password } = useSelector((state) => state.utilitiesReducer);
-const { adminLogged } = useSelector((state) => state.loginReducer);
+const { adminLogged, msgLogin } = useSelector((state) => state.loginReducer);
 // const { emailAuth } = useSelector((state) => state.authReducer);
 
 
@@ -104,6 +104,7 @@ const { adminLogged } = useSelector((state) => state.loginReducer);
                 <Form.Group className="mb-3" controlId="formBhandleSubmitLoginasicCheckbox">
                 </Form.Group>
               </Form>
+              {msgLogin ? <p className="red">{msgLogin}</p> : '' }
             </Modal.Body>
 
             <Modal.Footer>
