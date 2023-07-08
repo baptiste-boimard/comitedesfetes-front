@@ -25,7 +25,7 @@ function AdminManagement() {
   const dispatch = useDispatch();
 
   // ==CALL STORE==
-  const { email, password } = useSelector((state) => state.utilitiesReducer);
+  const { email, name, password } = useSelector((state) => state.utilitiesReducer);
   const { isOpenAddAdmin, isOpenManageAdmin } = useSelector((state) => state.adminReducer);
 
   // == ACTIONS ==
@@ -73,7 +73,7 @@ function AdminManagement() {
    * @addAdmin Add an admin to DB
    */
   const handleSubmitSignup = () => {
-    dispatch(addAdmin({email, password}));
+    dispatch(addAdmin({email, name, password}));
   }
 
 
@@ -133,6 +133,16 @@ function AdminManagement() {
                                   value={email}
                                   name="email"
                                   title="Email"
+                                  onChange={handleChange}
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Control type="text"
+                                  placeholder="Entrer votre nom d'auteur"
+                                  value={name}
+                                  name="name"
+                                  title="name"
                                   onChange={handleChange}
                     />
                   </Form.Group>

@@ -11,9 +11,10 @@ const initialState = {
   isOpenManageAdmin: false,
 };
 
-export const addAdmin = createAsyncThunk ('admin/addAdmin', async ({email, password}) => {
+export const addAdmin = createAsyncThunk ('admin/addAdmin', async ({email, name, password}) => {
   const response = await instance.post('/signup', {
     email,
+    name,
     password,
   });
   return response.data;
