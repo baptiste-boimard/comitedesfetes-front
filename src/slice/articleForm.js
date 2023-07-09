@@ -5,12 +5,26 @@ const instance = axios.create({
   baseURL:'http://localhost:3333',
 });
 
+export const saveArticle = createAsyncThunk ('tinymce/saveArticle', async ({title, summary, date, attach, userId},
+  {rejectWithValue}) => {
+  console.log(title, summary, date, attach, userId);
+  return await instance.post('/tinymcesave', {
+    title,
+    summary,
+    date,
+    attach,
+    userId,
+  })
+  .then((response) => {
+    console.log('coucou');
+  })
+  .catch((error) => {
+    return rejectWithValue(error);
+  })
+});
+
 const initialState = {
-  title:"",
-  summary:"",
-  date:"",
-  poster:"",
-  author:"",
+
 };
 
 const articleFormSlice = createSlice({
@@ -18,8 +32,21 @@ const articleFormSlice = createSlice({
   initialState,
   reducers: {
   },
+  extraReducers(builder) {
+    builder
+    .addCase(saveArticle.pending, (state, action) => {
+      state.status = 'loading'
+      console.log(state.status);
+    })
+    .addCase(saveArticle.fulfilled, (state, action) => {
+      state.status = 'suceeded';
+      console.log(state.status);
+    })
+    .addCase(saveArticle.rejected, (state, action) => {
+      console.log(state.status);
+      state.status = 'failed';
+    })
+  },
 });
-
-export const { saveTinymce } = articleFormSlice.actions;
 
 export default articleFormSlice.reducer;

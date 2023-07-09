@@ -137,7 +137,7 @@ function AdminManagement() {
                     />
                   </Form.Group>
 
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Control type="text"
                                   placeholder="Entrer votre nom d'auteur"
                                   value={name}

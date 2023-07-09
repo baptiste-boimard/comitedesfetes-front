@@ -43,7 +43,10 @@ export const downloadFromGdrive = createAsyncThunk ('tinymce/downloadFromGdrive'
   return response.data
 });
 
-
+export const saveArticle = createAsyncThunk ('tinymce/saveArticle', async ({title, summary, date, attach, content, author}) => {
+  const response = await instance.get('/tinymcesave');
+  return response.data
+});
 
 const tinymceSlice = createSlice({
   name: "tinymce",

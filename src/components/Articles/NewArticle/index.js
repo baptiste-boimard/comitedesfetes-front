@@ -13,7 +13,9 @@ import Form from 'react-bootstrap/Form';
 import './style.scss'
 
 // ==IMPORT ACTION==
-import { saveTinymce } from '../../../slice/tinymce';
+import { handleFieldChange } from '../../../slice/utilities';
+import { saveArticle } from '../../../slice/articleForm';
+
 
 // ==-- IMPORT THUNK MIDDLEWARE --==
 import { uploadToGdrive, downloadFromGdrive } from '../../../slice/tinymce';
@@ -26,10 +28,18 @@ function NewArticle() {
 
 // ==CALL STORE==
 const { loadTinymceContent } = useSelector((state) => state.tinymceReducer);
-const { summary, title, date, poster, author } = useSelector((state) => state.articleFormReducer);
+const { title, summary, date, attach, author } = useSelector((state) => state.utilitiesReducer);
+const { userId } = useSelector((state) => state.loginReducer);
 
 
   // == ACTIONS ==
+  const handleChange = (e) => {
+    dispatch(handleFieldChange({
+      name: e.target.name,
+      value: e.target.value
+    }));
+  };
+
   const log = () => {
     if (editorRef.current) {
       console.log(editorRef.current.getContent());
@@ -48,7 +58,12 @@ const { summary, title, date, poster, author } = useSelector((state) => state.ar
   };
   const saveButton = (e) => {
     e.preventDefault();
-    console.log(title, summary, date, poster, author);
+    console.log(title, summary, date, attach, author);
+  }
+  const handleSaveArticle = async(e) => {
+    e.preventDefault();
+    const content = editorRef.current.getContent();
+    await dispatch(saveArticle({title, summary, date, attach, userId}));
   }
 
 
@@ -65,19 +80,39 @@ const { summary, title, date, poster, author } = useSelector((state) => state.ar
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Titre</Form.Label>
-          <Form.Control type="text" placeholder="Entrer le titre de l'article" value={title} />
+          <Form.Control type="text"
+                        placeholder="Entrer le titre de l'article"
+                        value={title}
+                        name="title"
+                        title="title"
+                        onChange={handleChange}/>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Résumé de l'événement</Form.Label>
-          <Form.Control type="text" placeholder="Taper un résumé de l'événement" value={summary} />
+          <Form.Control type="text"
+                        placeholder="Taper un résumé de l'événement"
+                        value={summary}
+                        name="summary"
+                        title="summary"
+                        onChange={handleChange}/>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicDate">
           <Form.Label>Date de l'événement</Form.Label>
-          <Form.Control type="date" placeholder="Taper un résumé de l'événement" value={date}/>
+          <Form.Control type="date"
+                        placeholder="Taper un résumé de l'événement"
+                        value={date}
+                        name="date"
+                        title="date"
+                        onChange={handleChange}/>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPoster">
           <Form.Label>Affiche</Form.Label>
-          <Form.Control type="text" placeholder="Bouton pour uploader l'affiche" value={poster}/>
+          <Form.Control type="text"
+                        placeholder="Bouton pour uploader l'affiche"
+                        value={attach}
+                        name="attach"
+                        title="attach"
+                        onChange={handleChange}/>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicTinymce">
           <Form.Label>Contenu</Form.Label>
@@ -146,19 +181,25 @@ const { summary, title, date, poster, author } = useSelector((state) => state.ar
                           ]
                 }}
               />
-              <button onClick={log}>Log editor content</button>
+              {/* <button onClick={log}>Log editor content</button>
               <button onClick={relog}>Setcontent</button>
               <button onClick={save}>Save</button>
-              <button onClick={load}>Load</button>
+              <button onClick={load}>Load</button> */}
+              {/* <button onClick={saveArticle}>Sauvegarder article</button> */}
             </div>
             {/* //==-- COMPONENT TINYMCE --== */}
 
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicAuthor" value={author}>
+        {/* <Form.Group className="mb-3" controlId="formBasicAuthor" value={authorbis}>
           <Form.Label>Auteur</Form.Label>
-          <Form.Control type="text" placeholder="Taper votre nom" />
-        </Form.Group>
-        <Button variant="primary" type="submit" onClick={saveButton}>Sauvegarder</Button>
+          <Form.Control type="text"
+                        placeholder="Taper votre nom"
+                        values={authorbis}
+                        name="author"
+                        title="author"
+                        onChange={handleChange}/>
+        </Form.Group> */}
+        <Button variant="primary" type="submit" onClick={handleSaveArticle}>Sauvegarder</Button>
       </Form>
       {/* //==-- COMPONENT NEWARTICLES FORM --== */}
 

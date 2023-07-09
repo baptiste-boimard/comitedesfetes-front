@@ -4,6 +4,11 @@ const initialState = {
   email: '',
   name: '',
   password: '',
+  title: '',
+  summary: '',
+  date: '',
+  attach: '',
+  author: '',
 };
 
 const utilitiesSlice = createSlice({
